@@ -14,14 +14,16 @@ Summary: Finds the k nearest neighbours for every point in a given dataset in O(
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-rann-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-rann-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-rann-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-rann-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-rann-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-rann-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-rann-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-rann-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-rann-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-rann-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-rann-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-rann-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rann/badges/version.svg)](https://anaconda.org/conda-forge/r-rann)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-rann/badges/downloads.svg)](https://anaconda.org/conda-forge/r-rann)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--rann-green.svg)](https://anaconda.org/conda-forge/r-rann) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-rann.svg)](https://anaconda.org/conda-forge/r-rann) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-rann.svg)](https://anaconda.org/conda-forge/r-rann) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-rann.svg)](https://anaconda.org/conda-forge/r-rann) |
 
 Installing r-rann
 =================
