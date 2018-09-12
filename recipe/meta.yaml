@@ -1,5 +1,4 @@
-{% set version = '2.5.1' %}
-
+{% set version = '2.6' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,35 +9,37 @@ package:
 source:
   fn: RANN_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/RANN_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/RANN/RANN_{{ version }}.tar.gz
-  sha256: 75277e5d8a13ca01ff387f99d403268a8077862d4e95b076b74fb1b5538a8546
+    - {{ cran_mirror }}/src/contrib/RANN_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/RANN/RANN_{{ version }}.tar.gz
+  sha256: 31d274ff6be29a427cf9a96d7b54fd86d4a57954e0469fbfe58fa895e08ed9e4
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
-    - {{ compiler('cxx') }}        # [unix]
-    - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('RANN')"  # [not win]
+    - $R -e "library('RANN')"           # [not win]
     - "\"%R%\" -e \"library('RANN')\""  # [win]
 
 about:
@@ -50,6 +51,8 @@ about:
     distance is computed using the L2 (Euclidean) metric. Please see package 'RANN.L1'
     for the same functionality using the L1 (Manhattan, taxicab) metric.
   license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'  # [unix]
+  license_file: '{{ environ["PREFIX"] }}\R\share\licenses\GPL-3'  # [win]
 
 extra:
   recipe-maintainers:
@@ -57,3 +60,5 @@ extra:
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
